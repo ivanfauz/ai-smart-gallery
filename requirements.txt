@@ -1,0 +1,6 @@
+flask
+azure-cognitiveservices-vision-computervision
+msrest
+psycopg2-binary
+python-dotenv
+gunicorn

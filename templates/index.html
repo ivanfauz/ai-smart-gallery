@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Gallery AI</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .card { border: 1px solid #ddd; padding: 10px; border-radius: 8px; text-align: center; }
+        img { max-width: 100%; height: auto; border-radius: 4px; }
+        .upload-box { background: #f0f0f0; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Smart Gallery (Azure AI)</h1>
+    
+    <div class="upload-box">
+        <h3>Upload Foto Baru</h3>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required>
+            <button type="submit">Upload & Analisa</button>
+        </form>
+    </div>
+
+    <div class="gallery">
+        {% for photo in photos %}
+        <div class="card">
+            <img src="{{ url_for('static', filename='uploads/' + photo[1]) }}">
+            <p><strong>AI Berkata:</strong><br> {{ photo[2] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
